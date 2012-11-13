@@ -2,7 +2,7 @@ Jekyll Plugin for Using Pandoc-Ruby
 ===================================
 
 This is a plugin for using [pandoc][] as your markdown converter
-[jekyll][].
+in [jekyll][].
 
 Installation
 ------------
@@ -12,7 +12,7 @@ pandoc. You can install pandoc-ruby with:
 
     gem install pandoc-ruby
 
-To install the plugin, copy `pandoc_markdown.rb` into the `_plugins`
+To install this plugin, copy `pandoc_markdown.rb` into the `_plugins`
 directory in your site source root (if no `_plugins` directory exists,
 create it.)
 
@@ -35,22 +35,23 @@ a look at the [pandoc-ruby][] documentation.)
 Github Pages
 ------------
 
-The plugin will not work with github pages. If you set
-`markdown: pandoc` in your `_config.yml`, then, on github pages, that
-will be ignored, and your pages will be converted with the default
-markdown converter.
+The plugin will not work with [github pages][]. If you set
+`markdown: pandoc` in your `_config.yml`, github pages will ignore this
+setting, and the default markdown converter will be used.
 
-As a partial work around, if you set your preferred github-approved
-markdown converter in `_config.yml` and *also* set the `pandoc`
-variable, then the plugin will locally use pandoc to convert markdown.
-So, for example, a `_config.yml` containing both
+I use github pages to mirror my official site. My official site is built
+by jekyll using pandoc. I want my github mirror to be built using
+rdiscount, and I don't want to maintain two separate `_config.yml`
+files. My `_config.yml` file contains lines that look like this:
 
     markdown:  rdiscount
     pandoc:
        extensions: [smart, mathjax]
 
-will be converted using rdiscount on github pages, and pandoc locally.
-To get the same effect, but without passing any options to pandoc, try
+The plugin sees that the `pandoc` option has been set, and so uses
+pandoc. Github pages ignores the `pandoc` option, and sees that
+`markdown` has been set to rdiscount. To get the same effect, but
+without passing any options to pandoc, try
 
     markdown:  rdiscount
     pandoc:  true
@@ -58,3 +59,4 @@ To get the same effect, but without passing any options to pandoc, try
   [pandoc]: (http://johnmacfarlane.net/pandoc/
   [jekyll]: https://github.com/mojombo/jekyll
   [pandoc-ruby]: https://github.com/alphabetum/pandoc-ruby
+  [github pages]: http://pages.github.com/
