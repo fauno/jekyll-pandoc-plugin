@@ -4,6 +4,11 @@ Jekyll Plugin for Using Pandoc-Ruby
 This is a plugin for using [pandoc][] as your markdown converter
 in [jekyll][].
 
+Warning for Existing Users
+--------------------------
+
+After this [recent commit](https://github.com/dsanson/jekyll-pandoc-plugin/commit/8dd292f483cb81e008d769b4588f4cfb118b1d11), the plugin uses pandoc's `html5` output instead of `html`. This may break your existing CSS styling. See [Issue 3](https://github.com/dsanson/jekyll-pandoc-plugin/issues/3) for discussion.
+
 Installation
 ------------
 
