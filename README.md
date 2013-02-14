@@ -34,8 +34,15 @@ can add something like
     pandoc:
        extensions: [smart, mathjax]
 
-to your `_config.yml` file. (For how to deal with complex options, take
-a look at the [pandoc-ruby][] documentation.)
+to your `_config.yml` file. For more complex options that involve arguments, you will want something like
+
+    pandoc:
+        extensions:
+            - smart
+            - csl: 'apa.csl'
+            - bibliography: 'references.bib'
+
+
 
 Github Pages
 ------------
