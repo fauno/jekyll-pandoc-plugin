@@ -7,7 +7,11 @@ in [jekyll][].
 Warnings for Existing Users
 ---------------------------
 
-Thanks to @ivotron, the plugin has been rewritten to work with Jekyll 1.0.0. For older versions of Jekyll, you may wish to use the older version, which has the `old-version` tag.
+### Jekyll < 1.0.0
+
+Thanks to @ivotron, the plugin has been rewritten to work with Jekyll 1.0.0. The old version, which works with Jekyll < 1.0.0, can be found on the for-use-with-jekyll-pre-1.0.0 branch. 
+
+### HTML5
 
 After this [recent commit](https://github.com/dsanson/jekyll-pandoc-plugin/commit/8dd292f483cb81e008d769b4588f4cfb118b1d11), the plugin uses pandoc's `html5` output instead of `html`. This may break your existing CSS styling. See [Issue 3](https://github.com/dsanson/jekyll-pandoc-plugin/issues/3) for discussion.
 
