@@ -58,8 +58,11 @@ module Jekyll
         end
 
         def convert(content)
-	  @pandoc_extensions = @config['pandoc']['extensions']
-	  PandocRuby.new(content, *@pandoc_extensions).to_html5
+          @pandoc_extensions = case @config['pandoc']
+            when nil then []
+            else @config['pandoc'].fetch('extensions', [])
+          end
+          PandocRuby.new(content, *@pandoc_extensions).to_html5
         end
       end
     end
