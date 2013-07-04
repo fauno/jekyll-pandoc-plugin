@@ -49,7 +49,7 @@ module Jekyll
     class Markdown
       class PandocParser
         def initialize(config)
-	  require 'pandoc-ruby'
+          require 'pandoc-ruby'
           @config = config
         rescue LoadError
           STDERR.puts 'You are missing a library required for Pandoc. Please run:'
@@ -58,11 +58,15 @@ module Jekyll
         end
 
         def convert(content)
-          @pandoc_extensions = case @config['pandoc']
-            when nil then []
-            else @config['pandoc'].fetch('extensions', [])
+          extensions = config_option('extensions', [])
+          PandocRuby.new(content, *extensions).to_html5
+        end
+
+        def config_option(key, default=nil)
+          case @config['pandoc']
+            when nil then default
+            else @config['pandoc'].fetch(key, default)
           end
-          PandocRuby.new(content, *@pandoc_extensions).to_html5
         end
       end
     end
