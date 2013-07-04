@@ -59,7 +59,9 @@ module Jekyll
 
         def convert(content)
           extensions = config_option('extensions', [])
-          PandocRuby.new(content, *extensions).to_html5
+          format = config_option('format', 'html5')
+
+          PandocRuby.new(content, *extensions).send("to_#{format}")
         end
 
         def config_option(key, default=nil)
