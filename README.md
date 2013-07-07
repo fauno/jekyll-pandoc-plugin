@@ -13,7 +13,12 @@ Thanks to @ivotron, the plugin has been rewritten to work with Jekyll 1.0.0. The
 
 ### HTML5
 
-After this [recent commit](https://github.com/dsanson/jekyll-pandoc-plugin/commit/8dd292f483cb81e008d769b4588f4cfb118b1d11), the plugin uses pandoc's `html5` output instead of `html`. This may break your existing CSS styling. See [Issue 3](https://github.com/dsanson/jekyll-pandoc-plugin/issues/3) for discussion.
+After this [recent commit][html5] the plugin uses pandoc's `html5` output by
+default instead of `html`. This may break your existing CSS styling. See the
+[Configuration](#configuration) section if you'd like to go back to using
+`html` output.
+
+[html5]: https://github.com/dsanson/jekyll-pandoc-plugin/commit/8dd292f483cb81e008d769b4588f4cfb118b1d11
 
 Installation
 ------------
@@ -30,25 +35,33 @@ create it.)
 Configuration
 -------------
 
-To tell jekyll to use pandoc to convert markdown, add
+To tell jekyll to use pandoc to convert markdown, add the following line to
+your `_config.yml`.
 
     markdown: pandoc
 
-to your `_config.yml` file. If you want to pass options to pandoc, you
-can add something like
+This plugin supports two configuration options for pandoc. Specify them both in
+the pandoc section of your `_config.yml`.
+
+- `format` - the output format to use, e.g., `html5` (default) and `html`.
+- `extensions` - A list or hash of pandoc extensions to enable.
+
+If none of the extensions you're using take arguments, then `extensions` can be
+a list:
 
     pandoc:
-       extensions: [smart, mathjax]
+      format: html5
+      extensions: [smart, mathjax]
 
-to your `_config.yml` file. For more complex options that involve arguments, you will want something like
+If an extention takes options, make extensions a hash that maps each extension
+name to its argument.
 
     pandoc:
-        extensions:
-            - smart
-            - csl: 'apa.csl'
-            - bibliography: 'references.bib'
-
-
+      format: html
+      extensions:
+        - smart
+        - csl: 'apa.csl'
+        - bibliography: 'references.bib'
 
 Github Pages
 ------------
