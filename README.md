@@ -4,6 +4,18 @@ Jekyll Plugin for Using Pandoc-Ruby
 This is a plugin for using [pandoc][] as your markdown converter
 in [jekyll][].
 
+I am No Longer Maintaining This
+-------------------------------
+
+**I switched to using [Hakyll](http://jaspervdj.be/hakyll/) a year or two ago,
+and stopped using this plugin. In the meantime, Jekyll has gone through
+some major updates. There are two reasonable sounding pull requests, aimed
+at making the plugin work with recent updates. I am
+not going to pull them, because I cannot test them, and I don't want to 
+pretend to maintain something that I am not really maintaining.**
+
+You should probably use one of the more up-to-date forks instead of this repo.
+
 Warnings for Existing Users
 ---------------------------
 
