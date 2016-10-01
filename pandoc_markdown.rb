@@ -1,10 +1,18 @@
-require 'pandoc-ruby'
+module Jekyll
+  module Converters
+    class Markdown
+      class Pandoc
+        def initialize(config)
+          Jekyll::External.require_with_graceful_fail "pandoc-ruby"
+          @config = config["pandoc"] || {}
+        end
 
-class Jekyll::MarkdownConverter
-
-  def convert(content)
-    return super unless ( @config['markdown'] == 'pandoc' || @config['pandoc'] )
-    @pandoc_extensions = @config['pandoc']['extensions'].map { |e| e.to_sym }
-    PandocRuby.new(content, *@pandoc_extensions).to_html
+        def convert(content)
+          extensions = @config['extensions'] || []
+          format = @config['format'] || 'html5'
+          ::PandocRuby.new(content, *extensions).send("to_#{format}")
+        end
+      end
+    end
   end
 end
